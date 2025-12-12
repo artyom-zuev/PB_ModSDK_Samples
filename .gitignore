@@ -7,6 +7,8 @@
 AssetBundles/
 LocalizationEdits/
 WorkshopTemp/
+ConfigOverrides/
+ConfigEdits/
 
 # Solution files
 ExportedObj/
