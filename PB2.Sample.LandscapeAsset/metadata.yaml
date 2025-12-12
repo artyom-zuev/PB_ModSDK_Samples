@@ -11,7 +11,7 @@ includesTextures: false
 includesLocalizationEdits: false
 includesLocalizations: false
 includesAssetBundles: true
-gameVersionMin: 2.0
+gameVersionMin: 2.1
 gameVersionMax: 
 name: 'Sample: New Province'
 desc: >-
