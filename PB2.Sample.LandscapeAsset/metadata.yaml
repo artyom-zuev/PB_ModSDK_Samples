@@ -1,21 +1,23 @@
 priority: 0
-colorHue: 0.08
+colorHue: 0.532
 id: PB2.Sample.LandscapeAsset
-ver: 0.3
+ver: 0.4
 url: 
 includesConfigOverrides: true
 includesConfigEdits: false
 includesConfigTrees: false
 includesLibraries: false
 includesTextures: false
-includesLocalizationEdits: false
+includesLocalizationEdits: true
 includesLocalizations: false
 includesAssetBundles: true
 gameVersionMin: 2.1
 gameVersionMax: 
 name: 'Sample: New Province'
 desc: >-
-  [b]Sample mod[/b]. Adds a new province with a new landscape asset.
+  [b]Sample mod[/b]. Adds a new province with a new landscape asset (model and textures). The new province is integrated into the campaign and can be visited during liberation of the Outer Provinces.
 
 
   - Created using the [url=https://wiki.braceyourselfgames.com/en/PhantomBrigade/Modding/ModSDK][u]Mod SDK[/u][/url]
+
+  - Landscape tool: [url=https://quadspinner.com][u]Gaea 2[/u][/url]

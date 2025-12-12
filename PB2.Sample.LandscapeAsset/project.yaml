@@ -1,8 +1,33 @@
 configsVersion:
   version: 2.0.3-b7910
-workshop: 
+workshop:
+  publishedID: 3622322952
+  visibility: FriendsOnly
+  textFromMetadataVersion: true
+  textFromMetadataMain: true
+  title: 
+  description: 
+  internalData: 
+  changes: Minor adjustments.
+  tags:
+  - Overworld
+  - Campaign
+  - Models
+  - Textures
+  texPreviewUpload: true
 configEdits: 
-textEdits: 
+textEdits:
+  languages:
+    English:
+      sectors:
+        overworld_provinces:
+          text:
+            province_g1_mod_01_desc:
+              text: Sparsely populated highlands at the foot of the Sunset Walls. Full of snow and rare isotopes.
+              textSource: 
+            province_g1_mod_01_name:
+              text: Rodlund
+              textSource: 
 assetBundles:
   bundleDefinitions:
   - enabled: true

@@ -3,6 +3,11 @@
 [Ll]ogs/
 [Tt]emp/
 
+# SDK exports
+AssetBundles/
+LocalizationEdits/
+WorkshopTemp/
+
 # Solution files
 ExportedObj/
 *.svd
@@ -43,6 +48,3 @@ ExportedObj/
 **/.idea/**/*.iml
 **/.idea/**/contentModel.xml
 **/.idea/**/modules.xml
-
-# User asset bundles, library code for config editing etc.
-AssetBundles/
