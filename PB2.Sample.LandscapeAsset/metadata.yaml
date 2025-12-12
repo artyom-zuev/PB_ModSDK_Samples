@@ -1,0 +1,21 @@
+priority: 0
+colorHue: 0.08
+id: PB2.Sample.LandscapeAsset
+ver: 0.3
+url: 
+includesConfigOverrides: true
+includesConfigEdits: false
+includesConfigTrees: false
+includesLibraries: false
+includesTextures: false
+includesLocalizationEdits: false
+includesLocalizations: false
+includesAssetBundles: true
+gameVersionMin: 2.0
+gameVersionMax: 
+name: 'Sample: New Province'
+desc: >-
+  [b]Sample mod[/b]. Adds a new province with a new landscape asset.
+
+
+  - Created using the [url=https://wiki.braceyourselfgames.com/en/PhantomBrigade/Modding/ModSDK][u]Mod SDK[/u][/url]

@@ -1,0 +1,15 @@
+useDefaultWorkingPath: true
+workingPath: 
+configsVersion:
+  version: 2.0.3-b7910
+workshop: 
+configEdits: 
+textEdits: 
+assetBundles:
+  bundleDefinitions:
+  - enabled: true
+    name: landscape_sample
+    files:
+    - path: Assets/User/Sources/mod_landscape_01/mod_landscape_01.prefab
+libraryDLLs: 
+extraFiles: 
