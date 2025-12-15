@@ -271,14 +271,6 @@ entries:
     noteDev: 
     temp: true
     text: Rodlund
-  province_g1_mod_02_desc:
-    noteDev: 
-    temp: true
-    text: My description
-  province_g1_mod_02_name:
-    noteDev: 
-    temp: true
-    text: My name
   province_g2_01_desc:
     noteDev: 
     temp: false
@@ -311,6 +303,14 @@ entries:
     noteDev: 
     temp: false
     text: Malmland
+  province_g2_mod_02_desc:
+    noteDev: 
+    temp: true
+    text: A sparsely populated plateau full of mineral extraction operations. The lone mountain in the middle of the province was the site of the biggest radio observatory in Fyrland before the invasion.
+  province_g2_mod_02_name:
+    noteDev: 
+    temp: true
+    text: Ensamtberg
   province_g3_01_desc:
     noteDev: 
     temp: false

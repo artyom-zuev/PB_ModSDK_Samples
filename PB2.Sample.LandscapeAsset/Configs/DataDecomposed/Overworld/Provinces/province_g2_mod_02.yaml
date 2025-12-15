@@ -1,9 +1,11 @@
 hidden: false
+hiddenUntilSpawned: false
 tags:
-- group_liberation_01
+- group_liberation_02_start
+- group_liberation_02
 landscapeKey: mod_landscape_02
 factionBranchFixed: 
 scenarioChanges: 
 mapPosition:
-  x: -700
-  y: -525
+  x: -225
+  y: -300
