@@ -11,6 +11,7 @@ includesTextures: false
 includesLocalizationEdits: true
 includesLocalizations: false
 includesAssetBundles: true
+gameVersion2Compatible: false
 gameVersionMin: 2.1
 gameVersionMax: 
 name: 'Sample: New Province'
@@ -21,3 +22,5 @@ desc: >-
   - Created using the [url=https://wiki.braceyourselfgames.com/en/PhantomBrigade/Modding/ModSDK][u]Mod SDK[/u][/url]
 
   - Landscape tool: [url=https://quadspinner.com][u]Gaea 2[/u][/url]
+
+  - Tutorial: [url=https://github.com/BraceYourselfGames/PB_ModSDK/wiki/Creating-new-regions][u]Creating new regions[/u][/url]
