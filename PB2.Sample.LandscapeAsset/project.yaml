@@ -1,5 +1,5 @@
 configsVersion:
-  version: 2.0.3-b7910
+  version: 2.1.0
 workshop:
   publishedID: 3622322952
   visibility: FriendsOnly
@@ -28,11 +28,18 @@ textEdits:
             province_g1_mod_01_name:
               text: Rodlund
               textSource: 
+            province_g2_mod_02_desc:
+              text: A sparsely populated plateau full of mineral extraction operations. The lone mountain in the middle of the province was the site of the biggest radio observatory in Fyrland before the invasion.
+              textSource: 
+            province_g2_mod_02_name:
+              text: Ensamtberg
+              textSource: 
 assetBundles:
   bundleDefinitions:
   - enabled: true
     name: landscape_sample
     files:
     - path: Assets/User/Sources/mod_landscape_01/mod_landscape_01.prefab
+    - path: Assets/User/Sources/mod_landscape_02/mod_landscape_02.prefab
 libraryDLLs: 
 extraFiles: 
