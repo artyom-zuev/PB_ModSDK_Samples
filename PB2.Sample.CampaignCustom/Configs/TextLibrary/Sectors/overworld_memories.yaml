@@ -59,6 +59,10 @@ entries:
     noteDev: 
     temp: false
     text: Targets landed
+  mod_campaign_progress__name:
+    noteDev: 
+    temp: true
+    text: Campaign progress
   pilot_auto_combat_defeat__name:
     noteDev: 
     temp: false

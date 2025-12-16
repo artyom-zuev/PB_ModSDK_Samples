@@ -10,15 +10,15 @@ entries:
   mod_start_01__header:
     noteDev: 
     temp: true
-    text: Custom
+    text: Custom campaign
   mod_start_01__sub:
     noteDev: 
     temp: true
-    text: Test subtitle
+    text: Lead an elite squad behind the enemy lines
   mod_start_01__text:
     noteDev: 
     temp: true
-    text: Extended description for the test config.
+    text: Start at the capital and blaze your way through Fyrland. Minimal campaign with streamlined liberations.
   test__header:
     noteDev: 
     temp: true

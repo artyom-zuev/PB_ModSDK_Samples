@@ -20,18 +20,39 @@ ui:
       a: 0.7
   mapLabels: 
   mapProvinceFilter: 
-travelInteraction: 
+travelInteraction:
+  tagsUsed: false
+  keys:
+  - mod_campaign_arrival_01
+  tags: 
 entry:
   functionsGlobal:
-  - !Log
-    message: 'Campaign step 1: Entry'
+  - !ModifyMemoryBase
+    changes:
+    - change: Set
+      key: campaign_countdown_base_length
+      value: 24
+      valueFromMemory: false
+      valueFromMemoryKey: 
+  - !ApplyProvinceArrivalEffects {}
+  - !QuestStart
+    questKey: mod_liberation
   functionsBase: 
 liberation:
   functionsGlobal:
   - !Log
-    message: 'Campaign step 1: Liberation'
+    message: 'Campaign step 2: Liberation'
+  - !ModifyMemoryBase
+    changes:
+    - change: Offset
+      key: campaign_progress_region_01
+      value: 1
+      valueFromMemory: false
+      valueFromMemoryKey: 
   functionsBase: 
-progressDisplay: 
+progressDisplay:
+  memoryKey: mod_campaign_progress
+  target: 8
 effects: 
 branches:
 - comment: 

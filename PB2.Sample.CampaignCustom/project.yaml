@@ -16,7 +16,96 @@ configEdits:
       - path: hidden
         value: true
         operation: Override
-textEdits: 
+  - type: DataMultiLinkerOverworldInteraction
+    edits:
+    - key: hg_base_entry
+      removed: false
+      edits:
+      - path: steps.main.optionsReused
+        value: '!d'
+        operation: Override
+      - path: steps.main.optionsReused.0
+        value: '!+'
+        operation: Override
+      - path: steps.main.optionsReused.0.keyInteraction
+        value: mod_campaign_frontline_additions
+        operation: Override
+      - path: steps.main.optionsReused.0.keyStep
+        value: main
+        operation: Override
+      - path: steps.main.optionsReused.0.keyOption
+        value: campaign_options
+        operation: Override
+    - key: hg_base_exit
+      removed: false
+      edits:
+      - path: steps.main.optionsReused
+        value: '!d'
+        operation: Override
+      - path: steps.main.optionsReused.0
+        value: '!+'
+        operation: Override
+      - path: steps.main.optionsReused.0.keyInteraction
+        value: mod_campaign_frontline_additions
+        operation: Override
+      - path: steps.main.optionsReused.0.keyStep
+        value: main
+        operation: Override
+      - path: steps.main.optionsReused.0.keyOption
+        value: campaign_options
+        operation: Override
+textEdits:
+  languages:
+    English:
+      sectors:
+        overworld_campaign:
+          text:
+            mod_campaign_01__header:
+              text: Start header
+              textSource: 
+            mod_campaign_01__text:
+              text: Start desc
+              textSource: 
+            mod_campaign_02__header:
+              text: Loop header
+              textSource: 
+            mod_campaign_02__text:
+              text: Loop desc
+              textSource: 
+        overworld_interaction:
+          text:
+            mod_campaign_01_start__s_main_header:
+              text: RECEIVING INTEL...
+              textSource: 
+            mod_campaign_01_start__s_main_main:
+              text: >-
+                Congratulations, Commander. It's been a difficult battle, but you've successfully forced our oppressors to withdraw from the Capital. For the first time in years, Fyrland can be in control of its own destiny.
+
+
+                You and your team have deserved a long rest. But if and when you'd like to continue your campaign, there’s still work to be done. Even with the Capital liberated, there are provinces where the occupation stubbornly persists, attempting to hold the line against the 3F and clinging to the hope that Kaskad will somehow turn things around. It's time to drive their remaining forces back for good.
+              textSource: 
+            mod_campaign_01_start__s_main_op_start_header:
+              text: Start
+              textSource: 
+            mod_campaign_frontline_additions__s_main_op_campaign_options_header:
+              text: Campaign options
+              textSource: 
+        overworld_memories:
+          text:
+            mod_campaign_progress__name:
+              text: Campaign progress
+              textSource: 
+        overworld_start:
+          text:
+            mod_start_01__header:
+              text: Custom campaign
+              textSource: 
+            mod_start_01__sub:
+              text: Lead an elite squad behind the enemy lines
+              textSource: 
+            mod_start_01__text:
+              text: Extended description for the test config.
+              textSource: 
 assetBundles: 
 libraryDLLs: 
 extraFiles: 

@@ -238,16 +238,16 @@ entries:
   mod_campaign_01__header:
     noteDev: 
     temp: true
-    text: 1
-  mod_campaign_01__nav_header:
-    noteDev: 
-    temp: true
-    text: 3
-  mod_campaign_01__nav_text:
-    noteDev: 
-    temp: true
-    text: 4
+    text: Starting up
   mod_campaign_01__text:
     noteDev: 
     temp: true
-    text: 2
+    text: Get your bearings and pick a destination.
+  mod_campaign_02__header:
+    noteDev: 
+    temp: true
+    text: Punching through
+  mod_campaign_02__text:
+    noteDev: 
+    temp: true
+    text: Keep hitting the enemy where it hurts. Advance through Fyrland to rendezvous with allied forces.

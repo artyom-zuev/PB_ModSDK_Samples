@@ -1380,6 +1380,30 @@ entries:
     noteDev: 
     temp: false
     text: The enemy is not going anywhere.
+  mod_campaign_arrival_01__s_step_01_main:
+    noteDev: 
+    temp: true
+    text: One by one, red dots light up the map in the briefing room, warning about converging patrols and enemy positions. The base nears the frontline. They won't be able to stop you.
+  mod_campaign_frontline_additions__s_main_op_campaign_options_header:
+    noteDev: 
+    temp: true
+    text: Campaign options
+  mod_campaign_start__s_main_header:
+    noteDev: 
+    temp: true
+    text: RECEIVING INTEL...
+  mod_campaign_start__s_main_main:
+    noteDev: 
+    temp: true
+    text: >-
+      Congratulations, Commander. It's been a difficult battle, but you've successfully forced our oppressors to withdraw from the Capital. For the first time in years, Fyrland can be in control of its own destiny.
+
+
+      You and your team have deserved a long rest. But if and when you'd like to continue your campaign, there’s still work to be done. Even with the Capital liberated, there are provinces where the occupation stubbornly persists, attempting to hold the line against the 3F and clinging to the hope that Kaskad will somehow turn things around. It's time to drive their remaining forces back for good.
+  mod_campaign_start__s_main_op_start_header:
+    noteDev: 
+    temp: true
+    text: Start
   prequel_00__s_step_01_header:
     noteDev: 
     temp: false

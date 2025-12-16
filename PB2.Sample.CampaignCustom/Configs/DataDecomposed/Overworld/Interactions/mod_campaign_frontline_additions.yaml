@@ -1,0 +1,50 @@
+hidden: true
+parents: []
+core: 
+effectsOnExit: 
+tags: 
+check: 
+steps:
+  main:
+    comment: 
+    image: 
+    background: 
+    mood: 
+    textHeader: 
+    text: 
+    textReused: 
+    properties: 
+    effects: 
+    options:
+      campaign_options:
+        core:
+          hidden: false
+          hiddenIfUnavailable: false
+          textEffectsCombined: false
+          priority: 0
+          color:
+            r: 1
+            g: 0.4392157
+            b: 0.4392157
+            a: 1
+          effect: Exit
+        dataReused: 
+        textMain: {}
+        textMainReused: 
+        textContent: 
+        textContentReused: 
+        textEffect: 
+        textEffectReused: 
+        check: 
+        checkOtherOptions: 
+        checksGlobal: 
+        checksBase: 
+        checksTarget: 
+        effects:
+        - functionsBase: 
+          functionsTarget: 
+          functionsGlobal:
+          - !Log
+            message: Campaign options...
+          functionsLocal: 
+    optionsReused: 

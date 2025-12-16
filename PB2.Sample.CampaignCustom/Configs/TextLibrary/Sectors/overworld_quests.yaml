@@ -75,6 +75,42 @@ entries:
     noteDev: 
     temp: false
     text: It's time to take back Fyrland. The enemy forces in this province are few and far between, so this should be a good place to start.
+  mod_liberation__s_01_main_a_header:
+    noteDev: 
+    temp: true
+    text: All out
+  mod_liberation__s_01_main_a_text:
+    noteDev: 
+    temp: true
+    text: You're cleared to engage any target. Hit the enemy where it hurts.
+  mod_liberation__s_01_main_cd_main_text:
+    noteDev: 
+    temp: true
+    text: Progress by completing missions around the province. [78d7ff]Some targets are more challenging, but worth more.
+  mod_liberation__s_03_showdown_a_header:
+    noteDev: 
+    temp: true
+    text: Showdown
+  mod_liberation__s_03_showdown_a_text:
+    noteDev: 
+    temp: true
+    text: >-
+      The enemy is barely holding on, with most of the occupation forces retreating to the last stronghold in the region.
+
+
+      The frontline base is not available. All resistance forces have moved in to surround the enemy stronghold. It's time to join them.
+  mod_liberation__s_03_showdown_cd_main_text:
+    noteDev: 
+    temp: true
+    text: Strike the enemy stronghold to finish the fight.
+  mod_liberation_a_header:
+    noteDev: 
+    temp: true
+    text: Liberation
+  mod_liberation_a_text:
+    noteDev: 
+    temp: true
+    text: Free the province from the invaders.
   province_breakthrough_capital__s_main_a_header:
     noteDev: 
     temp: false
