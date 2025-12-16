@@ -1,0 +1,33 @@
+timeLastSync: 0
+localized: false
+exportMode: None
+name: 
+description: 
+splits: []
+tags: 
+groups: 
+entries:
+  mod_start_01__header:
+    noteDev: 
+    temp: true
+    text: Custom
+  mod_start_01__sub:
+    noteDev: 
+    temp: true
+    text: Test subtitle
+  mod_start_01__text:
+    noteDev: 
+    temp: true
+    text: Extended description for the test config.
+  test__header:
+    noteDev: 
+    temp: true
+    text: Test title
+  test__sub:
+    noteDev: 
+    temp: true
+    text: Test subtitle
+  test__text:
+    noteDev: 
+    temp: true
+    text: Extended description for the test config.

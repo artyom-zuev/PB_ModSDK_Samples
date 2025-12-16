@@ -1,0 +1,22 @@
+priority: 0
+colorHue: 0.5
+id: PB2.Sample.CampaignCustom
+ver: 0.1
+url: https://github.com/BraceYourselfGames/PB_ModSDK
+includesConfigOverrides: true
+includesConfigEdits: true
+includesConfigTrees: false
+includesLibraries: false
+includesTextures: false
+includesLocalizationEdits: true
+includesLocalizations: false
+includesAssetBundles: false
+gameVersion2Compatible: true
+gameVersionMin: 2.0
+gameVersionMax: 
+name: 'Sample: Custom campaign'
+desc: >-
+  [b]Sample mod[/b]. Adds a new campaign mode.
+
+
+  - Created using the [url=https://github.com/BraceYourselfGames/PB_ModSDK][u]Mod SDK[/u][/url]

@@ -1,0 +1,22 @@
+workshop: 
+configEdits:
+  dataLinkers:
+  - type: DataLinkerSettingsOverworld
+    file:
+      edits:
+      - path: customStartAllowed
+        value: true
+        operation: Override
+  dataMultiLinkers:
+  - type: DataMultiLinkerOverworldCampaignStart
+    edits:
+    - key: test
+      removed: false
+      edits:
+      - path: hidden
+        value: true
+        operation: Override
+textEdits: 
+assetBundles: 
+libraryDLLs: 
+extraFiles: 
