@@ -83,10 +83,14 @@ entries:
     noteDev: 
     temp: true
     text: You're cleared to engage any target. Hit the enemy where it hurts.
+  mod_liberation__s_01_main_cd_hvt_text:
+    noteDev: 
+    temp: true
+    text: Take out all high value targets in the province.
   mod_liberation__s_01_main_cd_main_text:
     noteDev: 
     temp: true
-    text: Progress by completing missions around the province. [78d7ff]Some targets are more challenging, but worth more.
+    text: Weaken the enemy by attacking secondary targets around the province.
   mod_liberation__s_03_showdown_a_header:
     noteDev: 
     temp: true

@@ -12,16 +12,29 @@ steps:
   01_main:
     comment: 
     index:
-      i: 2
+      i: 1
     textName: {}
     textDesc: {}
     textExit: 
     countdownCustom: 
     memoryDisplayed:
+    - mod_flag_hvt
     - quest_liberation_progress_s2
-    - quest_liberation_flag_raid
-    - quest_liberation_flag_incursion
     conditions:
+      hvt:
+        priority: 2
+        filterEventTypes:
+        - OverworldQuestMemory
+        - OverworldPointCombatEndLate
+        completionTarget: 
+        checkValue:
+          value: !OverworldIntValueQuestMemory
+            questKey: mod_liberation
+            memoryPrefix: 
+            memoryKey: quest_liberation_progress_s1
+          target: !OverworldIntValueFixed
+            value: 3
+        checksBase: 
       main:
         priority: 0
         filterEventTypes:
@@ -30,7 +43,7 @@ steps:
         completionTarget: 
         checkValue:
           value: !OverworldIntValueQuestMemory
-            questKey: province_liberation
+            questKey: mod_liberation
             memoryPrefix: 
             memoryKey: quest_liberation_progress_s2
           target: !OverworldIntValueMemoryAdv
@@ -167,17 +180,6 @@ steps:
         effectKey: 02_contest_spawn_reset
         questMain: true
         questKey: 
-      - !DeletePoints
-        mode: All
-        target: 0
-        onlyCombat: false
-        onlyHostile: false
-        checks:
-        - !OverworldValidatePointTags
-          tagsMethod: RequireAll
-          tags:
-          - tag: role_event
-            not: false
       - !ModifyMemoryProvinceCurrent
         changes:
         - change: Set
@@ -191,6 +193,33 @@ steps:
       - !OverworldAudioSync
         syncKey: music_worldmap_war
         value: 1
+      - !Comment
+        comment: Spawn a set of high value targets
+      - !CreatePoint
+        spawnPriority: Furthest
+        spawnGroup: poi
+        spawnRange: 
+        provinceOverride: 
+        nameOverride: 
+        questKey: 
+        functionsOnSpawn:
+        - !ModifyMemory
+          changes:
+          - change: Set
+            key: mod_flag_hvt
+            value: 1
+            valueFromMemory: false
+            valueFromMemoryKey: 
+        - !OverworldEntityBranchOutsideProvince {}
+        - !OverworldEntityEscalation
+          offset: false
+          level: 3
+        - !OverworldEntityLevelRelative
+          levelOffset: 1
+        tagsUsed: true
+        keys: 
+        tags:
+          contest_s3: true
       functionsBase: 
       functionsEventEntity: 
       linkedEffectKeys: 
