@@ -15,6 +15,16 @@ ConfigEdits/
 *.blend1
 *.psd
 
+# Solution builds
+**/AssemblyInfo.cs
+**/bin/Debug/*
+**/bin/Release/*
+**/obj/Debug/*
+**/obj/Release/*
+
+# Compiled release libraries, to keep mod projects exportable
+!**/obj/Release/ModExtensions.dll
+
 # Rider / User specific
 **/.idea/**/workspace.xml
 **/.idea/**/tasks.xml
