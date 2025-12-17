@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using UnityEngine;
@@ -51,21 +52,6 @@ namespace ModExtensions
                 var redrawMissionMethod = ModUtilities.GetPrivateMethodInfo (view, "RedrawMission", false, true);
                 var refreshColliderListMethod = ModUtilities.GetPrivateMethodInfo (view, "RefreshColliderList", false, true);
 
-                // Next, fetch custom settings specific to this mode
-                bool drawAnyCombatSite = false;
-                int drawLimit = 2;
-                
-                if (IDUtility.IsGameLoaded () && IDUtility.playerBasePersistent != null)
-                {
-                    var basePersistent = IDUtility.playerBasePersistent;
-                    if (basePersistent.TryGetMemoryFloat ("mod_ext_missions_list_unlinked", out var v1))
-                        drawAnyCombatSite = true;
-                    if (basePersistent.TryGetMemoryRounded ("mod_ext_missions_list_limit", out var v2))
-                        drawLimit = v2;
-                }
-                
-                Debug.Log ($"ModExtensions | RedrawMissions | Executing patch, field info found...");
-
                 var overworld = Contexts.sharedInstance.overworld;
                 if (missionEntityGroup == null)
                 {
@@ -103,7 +89,28 @@ namespace ModExtensions
                 
                 var RedrawMission = redrawMissionMethod.GetActionFromMethodInfo<CIHelperOverworldSidebarMission, OverworldEntity, float> (view);
                 var RefreshColliderList = refreshColliderListMethod.GetActionFromMethodInfo (view);
-
+                
+                
+                
+                
+                // Next, fetch custom settings
+                int drawLimit = 3;
+                bool drawFallbackAnyCombatDesc = false;
+                bool drawOnlyWithDisplayMemory = false;
+                
+                if (IDUtility.IsGameLoaded () && IDUtility.playerBasePersistent != null)
+                {
+                    var basePersistent = IDUtility.playerBasePersistent;
+                    if (basePersistent.TryGetMemoryRounded ("mod_ext_missions_list_limit", out var v1))
+                        drawLimit = v1;
+                    if (basePersistent.TryGetMemoryRounded ("mod_ext_missions_list_unlinked", out var v2) && v2 > 0)
+                        drawFallbackAnyCombatDesc = true;
+                    if (basePersistent.TryGetMemoryRounded ("mod_ext_missions_list_memory_exclusive", out var v3) && v3 > 0)
+                        drawOnlyWithDisplayMemory = true;
+                }
+                
+                Debug.Log ($"ModExtensions | RedrawMissions | Customized path | Limit: {drawLimit} | Any combat site: {drawFallbackAnyCombatDesc} | Draw only with display memory: {drawOnlyWithDisplayMemory}");
+                
                 List<OverworldEntity> entitiesFinal = null;
                 if (entitiesQuestLinked != null && entitiesQuestLinked.Count > 0)
                 {
@@ -111,16 +118,58 @@ namespace ModExtensions
                     missionEntityBuffer.AddRange (entitiesQuestLinked);
                     entitiesFinal = missionEntityBuffer;
                 }
-                else if (drawAnyCombatSite)
+                else if (drawFallbackAnyCombatDesc)
                 {
                     var entitiesCombatDesc = missionEntityGroup.GetEntities (missionEntityBuffer);
                     entitiesFinal = entitiesCombatDesc;
                 }
                 
+                var questsActive = overworld.hasQuestsActive ? overworld.questsActive.s : null;
+                int questsCount = questsActive != null ? questsActive.Count : 0;
+                bool questsVisible = questsCount > 0;
+                HashSet<string> memoryDisplayed = null;
+
+                if (questsActive != null && questsVisible && drawOnlyWithDisplayMemory)
+                {
+                    if (string.IsNullOrEmpty (questKeyLast) || !questsActive.ContainsKey (questKeyLast))
+                        questKeyLast = questsActive.Keys.First ();
+
+                    var questState = questsActive[questKeyLast];
+                    var questData = DataMultiLinkerOverworldQuest.GetEntry (questKeyLast, false);
+                    var steps = questData?.stepsProc;
+                    var stepData = questState != null && steps != null && !string.IsNullOrEmpty (questState.step) && steps.TryGetValue (questState.step, out var s) ? s : null;
+
+                    if (stepData != null)
+                    {
+                        if (stepData.memoryDisplayed != null && stepData.memoryDisplayed.Count > 0)
+                            memoryDisplayed = stepData.memoryDisplayed;
+                    }
+                }
+
                 if (entitiesFinal != null && entitiesFinal.Count > 0)
                 {
                     foreach (var entityOverworld in entitiesFinal)
                     {
+                        var entityPersistent = IDUtility.GetLinkedPersistentEntity (entityOverworld);
+                        if (entityPersistent == null || entityPersistent.isDestroyed)
+                            continue;
+                        
+                        if (drawOnlyWithDisplayMemory && memoryDisplayed != null)
+                        {
+                            bool anyMemoryFound = false;
+                            foreach (var memoryKey in memoryDisplayed)
+                            {
+                                if (entityPersistent.TryGetMemoryFloat (memoryKey, out var v))
+                                {
+                                    anyMemoryFound = true;
+                                    break;
+                                }
+                            }
+                            
+                            if (!anyMemoryFound)
+                                continue;
+                        }
+                        
                         var instance = UIHelper.GetInstanceFromPool
                         (
                             missionPool,
@@ -141,8 +190,6 @@ namespace ModExtensions
                         UIHelper.ReplaceCallbackInt (ref instance.button.callbackOnHoverStart, OnMissionHoverStart, id);
                         UIHelper.ReplaceCallbackInt (ref instance.button.callbackOnHoverEnd, OnMissionHoverEnd, id);
                         UIHelper.ReplaceCallbackInt (ref instance.button.callbackOnClickSecondary, OnMissionClickSecondary, id);
-                        
-                        var entityPersistent = IDUtility.GetLinkedPersistentEntity (entityOverworld);
 
                         sb.Clear ();
                         sb.Append ("Overworld: ");

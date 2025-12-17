@@ -1,7 +1,7 @@
 priority: 0
 colorHue: 0.5
 id: PB2.Utils.ModExtensions
-ver: 0.1
+ver: 0.2
 url: https://github.com/BraceYourselfGames/PB_ModSDK
 includesConfigOverrides: true
 includesConfigEdits: false
@@ -12,11 +12,7 @@ includesLocalizationEdits: false
 includesLocalizations: false
 includesAssetBundles: false
 gameVersion2Compatible: true
-gameVersionMin: 2.0
+gameVersionMin: 2.1
 gameVersionMax: 
 name: ModExtensions
-desc: >-
-  [b]Sample mod[/b]. Adds utilities for mods.
-
-
-  - Created using the [url=https://github.com/BraceYourselfGames/PB_ModSDK][u]Mod SDK[/u][/url]
+desc: "[b]Sample mod[/b]. Adds utilities for mods. \n- Adds utilities simplifying patching and access to private fields and methods.\n- Patches some overworld UI to improve mission display in custom campaigns.\n- Created using the [url=https://github.com/BraceYourselfGames/PB_ModSDK][u]Mod SDK[/u][/url]"
