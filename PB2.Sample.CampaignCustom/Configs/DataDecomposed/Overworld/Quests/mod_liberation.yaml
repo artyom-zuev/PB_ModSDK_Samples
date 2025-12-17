@@ -195,31 +195,39 @@ steps:
         value: 1
       - !Comment
         comment: Spawn a set of high value targets
-      - !CreatePoint
-        spawnPriority: Furthest
-        spawnGroup: poi
-        spawnRange: 
-        provinceOverride: 
-        nameOverride: 
-        questKey: 
-        functionsOnSpawn:
-        - !ModifyMemory
-          changes:
-          - change: Set
-            key: mod_flag_hvt
-            value: 1
-            valueFromMemory: false
-            valueFromMemoryKey: 
-        - !OverworldEntityBranchOutsideProvince {}
-        - !OverworldEntityEscalation
-          offset: false
-          level: 3
-        - !OverworldEntityLevelRelative
-          levelOffset: 1
-        tagsUsed: true
-        keys: 
-        tags:
-          contest_s3: true
+      - !OverworldRepeatGroup
+        repeats: 3
+        functions:
+        - !CreatePoint
+          spawnPriority: Furthest
+          spawnGroup: poi
+          spawnRange: 
+          provinceOverride: 
+          nameOverride: 
+          questKey: 
+          functionsOnSpawn:
+          - !ModifyMemory
+            changes:
+            - change: Set
+              key: mod_flag_hvt
+              value: 1
+              valueFromMemory: false
+              valueFromMemoryKey: 
+            - change: Set
+              key: quest_liberation_progress_s1
+              value: 1
+              valueFromMemory: false
+              valueFromMemoryKey: 
+          - !OverworldEntityBranchOutsideProvince {}
+          - !OverworldEntityEscalation
+            offset: false
+            level: 3
+          - !OverworldEntityLevelRelative
+            levelOffset: 1
+          tagsUsed: true
+          keys: 
+          tags:
+            contest_s3: true
       functionsBase: 
       functionsEventEntity: 
       linkedEffectKeys: 

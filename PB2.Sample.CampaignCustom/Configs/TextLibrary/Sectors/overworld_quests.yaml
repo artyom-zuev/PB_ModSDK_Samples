@@ -86,11 +86,15 @@ entries:
   mod_liberation__s_01_main_cd_hvt_text:
     noteDev: 
     temp: true
-    text: Take out all high value targets in the province.
+    text: >-
+      [sp=s_icon_l24_inv_empty2]   Objective 1
+               [cc]Take out all high value targets in the province.[ff]
   mod_liberation__s_01_main_cd_main_text:
     noteDev: 
     temp: true
-    text: Weaken the enemy by attacking secondary targets around the province.
+    text: >-
+      [B9E7FF][sp=s_icon_l24_inv_repeat2]   Objective 2
+               [cc]Weaken the enemy by attacking secondary targets around the province.[ff][-]
   mod_liberation__s_03_showdown_a_header:
     noteDev: 
     temp: true

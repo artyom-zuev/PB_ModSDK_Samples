@@ -1388,6 +1388,18 @@ entries:
     noteDev: 
     temp: true
     text: Campaign options
+  mod_campaign_options__s_main_main:
+    noteDev: 
+    temp: true
+    text: You turn your eyes away from the frontline outpost and focus on the screens in front of you.
+  mod_campaign_options__s_main_op_option_a_header:
+    noteDev: 
+    temp: true
+    text: Advance research
+  mod_campaign_options__s_main_op_option_a_text:
+    noteDev: 
+    temp: true
+    text: Invest some of the materials you have into the prediction system.
   mod_campaign_start__s_main_header:
     noteDev: 
     temp: true
@@ -1395,7 +1407,7 @@ entries:
   mod_campaign_start__s_main_main:
     noteDev: 
     temp: true
-    text: After days in the dark navigating the Northern Supercollider tunnels, your mobile base finally emerges into the light. You are deep behind enemy lines, in the Keystone pass. Your predeccessors have failed, but there has to be a way to bring the enemy down. The enemy will be unprepared for a strike from within.
+    text: After days in the dark navigating the Northern Supercollider tunnels, your mobile base finally emerges into the light. You are deep behind enemy lines, the foot of the Keystone Mountains. Your predecessors have failed, but there has to be a way to bring the enemy down. They will be unprepared for a strike from within.
   mod_campaign_start__s_main_op_start_header:
     noteDev: 
     temp: true

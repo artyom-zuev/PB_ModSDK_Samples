@@ -61,39 +61,74 @@ textEdits:
         overworld_campaign:
           text:
             mod_campaign_01__header:
-              text: Start header
+              text: Starting up
               textSource: 
             mod_campaign_01__text:
-              text: Start desc
+              text: Get your bearings and pick a destination.
               textSource: 
             mod_campaign_02__header:
-              text: Loop header
+              text: Punching through
               textSource: 
             mod_campaign_02__text:
-              text: Loop desc
+              text: Keep hitting the enemy where it hurts. Advance through Fyrland to rendezvous with allied forces.
               textSource: 
         overworld_interaction:
           text:
-            mod_campaign_01_start__s_main_header:
-              text: RECEIVING INTEL...
-              textSource: 
-            mod_campaign_01_start__s_main_main:
-              text: >-
-                Congratulations, Commander. It's been a difficult battle, but you've successfully forced our oppressors to withdraw from the Capital. For the first time in years, Fyrland can be in control of its own destiny.
-
-
-                You and your team have deserved a long rest. But if and when you'd like to continue your campaign, there’s still work to be done. Even with the Capital liberated, there are provinces where the occupation stubbornly persists, attempting to hold the line against the 3F and clinging to the hope that Kaskad will somehow turn things around. It's time to drive their remaining forces back for good.
-              textSource: 
-            mod_campaign_01_start__s_main_op_start_header:
-              text: Start
+            mod_campaign_arrival_01__s_step_01_main:
+              text: One by one, red dots light up the map in the briefing room, warning about converging patrols and enemy positions. The base nears the frontline. They won't be able to stop you.
               textSource: 
             mod_campaign_frontline_additions__s_main_op_campaign_options_header:
               text: Campaign options
+              textSource: 
+            mod_campaign_start__s_main_header:
+              text: RECEIVING INTEL...
+              textSource: 
+            mod_campaign_start__s_main_main:
+              text: After days in the dark navigating the Northern Supercollider tunnels, your mobile base finally emerges into the light. You are deep behind enemy lines, in the Keystone pass. Your predeccessors have failed, but there has to be a way to bring the enemy down. The enemy will be unprepared for a strike from within.
+              textSource: 
+            mod_campaign_start__s_main_op_start_header:
+              text: Start
               textSource: 
         overworld_memories:
           text:
             mod_campaign_progress__name:
               text: Campaign progress
+              textSource: 
+            mod_flag_hvt__name:
+              text: High value target
+              textSource: 
+        overworld_quests:
+          text:
+            mod_liberation__s_01_main_a_header:
+              text: All out
+              textSource: 
+            mod_liberation__s_01_main_a_text:
+              text: You're cleared to engage any target. Hit the enemy where it hurts.
+              textSource: 
+            mod_liberation__s_01_main_cd_hvt_text:
+              text: Take out all high value targets in the province.
+              textSource: 
+            mod_liberation__s_01_main_cd_main_text:
+              text: Weaken the enemy by attacking secondary targets around the province.
+              textSource: 
+            mod_liberation__s_03_showdown_a_header:
+              text: Showdown
+              textSource: 
+            mod_liberation__s_03_showdown_a_text:
+              text: >-
+                The enemy is barely holding on, with most of the occupation forces retreating to the last stronghold in the region.
+
+
+                The frontline base is not available. All resistance forces have moved in to surround the enemy stronghold. It's time to join them.
+              textSource: 
+            mod_liberation__s_03_showdown_cd_main_text:
+              text: Strike the enemy stronghold to finish the fight.
+              textSource: 
+            mod_liberation_a_header:
+              text: Liberation
+              textSource: 
+            mod_liberation_a_text:
+              text: Free the province from the invaders.
               textSource: 
         overworld_start:
           text:
@@ -104,7 +139,7 @@ textEdits:
               text: Lead an elite squad behind the enemy lines
               textSource: 
             mod_start_01__text:
-              text: Extended description for the test config.
+              text: Start at the capital and blaze your way through Fyrland. Minimal campaign with streamlined liberations.
               textSource: 
 assetBundles: 
 libraryDLLs: 

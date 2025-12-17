@@ -27,7 +27,7 @@ steps:
             g: 0.4392157
             b: 0.4392157
             a: 1
-          effect: Exit
+          effect: None
         dataReused: 
         textMain: {}
         textMainReused: 
@@ -45,6 +45,12 @@ steps:
           functionsTarget: 
           functionsGlobal:
           - !Log
-            message: Campaign options...
+            message: Escaping from standard frontline event into a custom event...
+          - !OverworldInteractionStartFilter
+            overrideOngoing: true
+            tagsUsed: false
+            keys:
+            - mod_campaign_options
+            tags: 
           functionsLocal: 
     optionsReused: 

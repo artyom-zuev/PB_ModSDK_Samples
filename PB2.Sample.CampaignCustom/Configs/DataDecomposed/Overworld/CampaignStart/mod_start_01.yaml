@@ -7,7 +7,7 @@ color:
 stepKey: mod_campaign_01
 provinceKey: province_breakthrough_central
 position:
-  x: 0
+  x: -160
   y: 0
   z: 0
 branchKey: 
@@ -38,6 +38,6 @@ functionsGlobal:
   overrideOngoing: true
   tagsUsed: false
   keys:
-  - mod_campaign_01_start
+  - mod_campaign_start
   tags: 
 functionsBase: 
