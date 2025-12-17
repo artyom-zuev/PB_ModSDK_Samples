@@ -1,0 +1,9 @@
+workshop: 
+configEdits: 
+textEdits: 
+assetBundles: 
+libraryDLLs:
+  files:
+  - enabled: true
+    path: D:/Work/UnityProjects/PB_ModSDK_Samples/PB2.Utils.ModExtensions/Solution/ModExtensions/ModExtensions/obj/Release/ModExtensions.dll
+extraFiles: 

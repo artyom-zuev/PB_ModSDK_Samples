@@ -11,23 +11,7 @@ WorkshopTemp/
 ConfigOverrides/
 ConfigEdits/
 
-# Solution files
-ExportedObj/
-*.svd
-*.csproj
-*.unityproj
-*.sln
-*.suo
-*.tmp
-*.user
-*.userprefs
-*.pidb
-*.booproj
-*.vs
-.vsconfig
-.vscode/
-*.zip
-*.unitypackage
+# Misc files
 *.blend1
 *.psd
 
