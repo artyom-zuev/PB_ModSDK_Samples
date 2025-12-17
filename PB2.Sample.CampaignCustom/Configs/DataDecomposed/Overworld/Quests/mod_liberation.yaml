@@ -19,8 +19,6 @@ steps:
     countdownCustom: 
     memoryDisplayed:
     - mod_flag_hvt
-    - quest_liberation_progress_s2
-    - quest_liberation_progress_s1
     conditions:
       hvt:
         priority: 2
@@ -34,7 +32,7 @@ steps:
             memoryPrefix: 
             memoryKey: quest_liberation_progress_s2
           target: !OverworldIntValueFixed
-            value: 3
+            value: 2
         checksBase: 
       main:
         priority: 0
@@ -48,7 +46,7 @@ steps:
             memoryPrefix: 
             memoryKey: quest_liberation_progress_s1
           target: !OverworldIntValueFixed
-            value: 6
+            value: 5
         checksBase: 
     effectsOnEvents:
     - early: true
@@ -221,32 +219,64 @@ steps:
         value: 1
       - !QuestProvinceCreatePointFiltered
         spawnRange:
-          x: 300
-          y: 10000
-        spawnPriority: None
+          x: 0
+          y: 0
+        spawnPriority: Furthest
         filter:
-          mod_hvt: true
-        spawnGroupOverride: poi
+          boss: true
+        spawnGroupOverride: 
         nameOverride: 
         functionsOnSpawn:
         - !ModifyMemory
           changes:
           - change: Set
+            key: quest_liberation_progress_s2
+            value: 1
+            valueFromMemory: false
+            valueFromMemoryKey: 
+          - change: Set
             key: mod_flag_hvt
             value: 1
             valueFromMemory: false
             valueFromMemoryKey: 
+        questMain: true
+        questKey: 
+      - !QuestProvinceCreatePoint
+        key: generic_base_showdown
+        spawnGroupOverride: 
+        nameOverride: 
+        functionsOnSpawn:
+        - !ModifyMemory
+          changes:
           - change: Set
             key: quest_liberation_progress_s2
             value: 1
             valueFromMemory: false
             valueFromMemoryKey: 
-        - !OverworldEntityBranchOutsideProvince {}
-        - !OverworldEntityEscalation
-          offset: false
-          level: 3
-        - !OverworldEntityLevelRelative
-          levelOffset: 1
+          - change: Set
+            key: mod_flag_hvt
+            value: 1
+            valueFromMemory: false
+            valueFromMemoryKey: 
+        questMain: true
+        questKey: 
+      - !QuestProvinceCreatePoint
+        key: generic_assassination
+        spawnGroupOverride: 
+        nameOverride: 
+        functionsOnSpawn:
+        - !ModifyMemory
+          changes:
+          - change: Set
+            key: quest_liberation_progress_s2
+            value: 1
+            valueFromMemory: false
+            valueFromMemoryKey: 
+          - change: Set
+            key: mod_flag_hvt
+            value: 1
+            valueFromMemory: false
+            valueFromMemoryKey: 
         questMain: true
         questKey: 
       - !QuestLiberationUpdate

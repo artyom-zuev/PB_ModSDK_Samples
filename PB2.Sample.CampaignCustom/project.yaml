@@ -80,6 +80,9 @@ configEdits:
       - path: tags
         value: mod_hvt !+
         operation: Override
+      - path: tags
+        value: boss !+
+        operation: Override
 textEdits:
   languages:
     English:
