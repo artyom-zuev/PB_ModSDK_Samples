@@ -199,6 +199,23 @@ steps:
       checksGlobal: 
       checksBase: 
       functionsGlobal:
+      - !ModifyMemoryBase
+        changes:
+        - change: Set
+          key: mod_ext_missions_list_limit
+          value: 0
+          valueFromMemory: false
+          valueFromMemoryKey: 
+        - change: Set
+          key: mod_ext_missions_list_unlinked
+          value: 0
+          valueFromMemory: false
+          valueFromMemoryKey: 
+        - change: Set
+          key: mod_ext_missions_list_memory_exclusive
+          value: 1
+          valueFromMemory: false
+          valueFromMemoryKey: 
       - !QuestMemorySet
         memoryKey: quest_liberation_event_spawns
         value: 0
