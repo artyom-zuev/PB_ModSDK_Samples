@@ -7,6 +7,9 @@ configEdits:
       - path: customStartAllowed
         value: true
         operation: Override
+      - path: pointSpawnRangeDefault
+        value: (0, 10000)
+        operation: Override
   dataMultiLinkers:
   - type: DataMultiLinkerOverworldCampaignStart
     edits:
@@ -54,6 +57,29 @@ configEdits:
       - path: steps.main.optionsReused.0.keyOption
         value: campaign_options
         operation: Override
+  - type: DataMultiLinkerOverworldPointPreset
+    edits:
+    - key: generic_assassination
+      removed: false
+      edits:
+      - path: tags
+        value: mod_hvt !+
+        operation: Override
+    - key: generic_base_showdown
+      removed: false
+      edits:
+      - path: tags
+        value: mod_hvt !+
+        operation: Override
+    - key: generic_boss
+      removed: false
+      edits:
+      - path: hidden
+        value: true
+        operation: Override
+      - path: tags
+        value: mod_hvt !+
+        operation: Override
 textEdits:
   languages:
     English:
@@ -80,11 +106,20 @@ textEdits:
             mod_campaign_frontline_additions__s_main_op_campaign_options_header:
               text: Campaign options
               textSource: 
+            mod_campaign_options__s_main_main:
+              text: You turn your eyes away from the frontline outpost and focus on the screens in front of you.
+              textSource: 
+            mod_campaign_options__s_main_op_option_a_header:
+              text: Advance research
+              textSource: 
+            mod_campaign_options__s_main_op_option_a_text:
+              text: Invest some of the materials you have into the prediction system.
+              textSource: 
             mod_campaign_start__s_main_header:
               text: RECEIVING INTEL...
               textSource: 
             mod_campaign_start__s_main_main:
-              text: After days in the dark navigating the Northern Supercollider tunnels, your mobile base finally emerges into the light. You are deep behind enemy lines, in the Keystone pass. Your predeccessors have failed, but there has to be a way to bring the enemy down. The enemy will be unprepared for a strike from within.
+              text: After days in the dark navigating the Northern Supercollider tunnels, your mobile base finally emerges into the light. You are deep behind enemy lines, the foot of the Keystone Mountains. Your predecessors have failed, but there has to be a way to bring the enemy down. They will be unprepared for a strike from within.
               textSource: 
             mod_campaign_start__s_main_op_start_header:
               text: Start
@@ -95,7 +130,7 @@ textEdits:
               text: Campaign progress
               textSource: 
             mod_flag_hvt__name:
-              text: High value target
+              text: HVT
               textSource: 
         overworld_quests:
           text:
@@ -106,23 +141,14 @@ textEdits:
               text: You're cleared to engage any target. Hit the enemy where it hurts.
               textSource: 
             mod_liberation__s_01_main_cd_hvt_text:
-              text: Take out all high value targets in the province.
+              text: >-
+                [ff][sp=s_icon_l24_inv_empty2]   Objective 1
+                         [cc]Take out all high value targets in the province.[ff]
               textSource: 
             mod_liberation__s_01_main_cd_main_text:
-              text: Weaken the enemy by attacking secondary targets around the province.
-              textSource: 
-            mod_liberation__s_03_showdown_a_header:
-              text: Showdown
-              textSource: 
-            mod_liberation__s_03_showdown_a_text:
               text: >-
-                The enemy is barely holding on, with most of the occupation forces retreating to the last stronghold in the region.
-
-
-                The frontline base is not available. All resistance forces have moved in to surround the enemy stronghold. It's time to join them.
-              textSource: 
-            mod_liberation__s_03_showdown_cd_main_text:
-              text: Strike the enemy stronghold to finish the fight.
+                [ff][b9e7ff][sp=s_icon_l24_inv_repeat2]   Objective 2
+                         [cc]Weaken the enemy by attacking secondary targets around the province.[ff][-]
               textSource: 
             mod_liberation_a_header:
               text: Liberation
@@ -139,7 +165,7 @@ textEdits:
               text: Lead an elite squad behind the enemy lines
               textSource: 
             mod_start_01__text:
-              text: Start at the capital and blaze your way through Fyrland. Minimal campaign with streamlined liberations.
+              text: Start behind the enemy lines, take the enemy off guard and blaze your way through Fyrland. Minimal campaign with streamlined liberation objectives.
               textSource: 
 assetBundles: 
 libraryDLLs: 

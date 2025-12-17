@@ -87,30 +87,14 @@ entries:
     noteDev: 
     temp: true
     text: >-
-      [sp=s_icon_l24_inv_empty2]   Objective 1
+      [ff][sp=s_icon_l24_inv_empty2]   Objective 1
                [cc]Take out all high value targets in the province.[ff]
   mod_liberation__s_01_main_cd_main_text:
     noteDev: 
     temp: true
     text: >-
-      [B9E7FF][sp=s_icon_l24_inv_repeat2]   Objective 2
+      [ff][b9e7ff][sp=s_icon_l24_inv_repeat2]   Objective 2
                [cc]Weaken the enemy by attacking secondary targets around the province.[ff][-]
-  mod_liberation__s_03_showdown_a_header:
-    noteDev: 
-    temp: true
-    text: Showdown
-  mod_liberation__s_03_showdown_a_text:
-    noteDev: 
-    temp: true
-    text: >-
-      The enemy is barely holding on, with most of the occupation forces retreating to the last stronghold in the region.
-
-
-      The frontline base is not available. All resistance forces have moved in to surround the enemy stronghold. It's time to join them.
-  mod_liberation__s_03_showdown_cd_main_text:
-    noteDev: 
-    temp: true
-    text: Strike the enemy stronghold to finish the fight.
   mod_liberation_a_header:
     noteDev: 
     temp: true

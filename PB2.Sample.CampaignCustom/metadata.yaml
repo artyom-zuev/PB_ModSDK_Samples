@@ -1,7 +1,7 @@
 priority: 0
 colorHue: 0.5
 id: PB2.Sample.CampaignCustom
-ver: 0.9
+ver: 1.6
 url: https://github.com/BraceYourselfGames/PB_ModSDK
 includesConfigOverrides: true
 includesConfigEdits: true
