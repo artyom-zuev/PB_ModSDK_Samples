@@ -1,7 +1,7 @@
 priority: 0
-colorHue: 0.5
+colorHue: 0
 id: PB2.Sample.CampaignCustom
-ver: 1.16
+ver: 1.22
 url: https://github.com/BraceYourselfGames/PB_ModSDK
 includesConfigOverrides: true
 includesConfigEdits: true
@@ -12,11 +12,15 @@ includesLocalizationEdits: true
 includesLocalizations: false
 includesAssetBundles: false
 gameVersion2Compatible: true
-gameVersionMin: 2.0
+gameVersionMin: 2.1
 gameVersionMax: 
 name: 'Sample: Custom campaign'
 desc: >-
-  [b]Sample mod[/b]. Adds a new campaign mode.
+  [b]Sample mod[/b]. Adds a new campaign mode. Available through the new button in the main menu. Starts a chain of province liberations using a quest different from the main game. Liberations occur in a single stage, every enemy is visible immediately and you need to fulfill a quota of high value targets and secondary targets. The new mode loops indefinitely.
 
+
+  - Depends on ModExtensions, make sure to install it or the mod might not load correctly
+
+  - Provides an example of modifying campaign steps, quests, interactions, memory and a few other databases related to campaign structure and presentation
 
   - Created using the [url=https://github.com/BraceYourselfGames/PB_ModSDK][u]Mod SDK[/u][/url]

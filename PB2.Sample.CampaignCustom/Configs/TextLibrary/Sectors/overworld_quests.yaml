@@ -82,19 +82,19 @@ entries:
   mod_liberation__s_01_main_a_text:
     noteDev: 
     temp: true
-    text: You're cleared to engage any target. Hit the enemy where it hurts.
+    text: 'The resistance forces have relayed detailed intel about every target in the region. You can engage in any order: all that matters is overwhelming the enemy.'
   mod_liberation__s_01_main_cd_hvt_text:
     noteDev: 
     temp: true
     text: >-
       [ff][sp=s_icon_l24_inv_empty2]   Objective 1
-               [cc]Take out all high value targets in the province.[ff]
+               [cc]Take out enough high value targets to break the enemy morale[ff]
   mod_liberation__s_01_main_cd_main_text:
     noteDev: 
     temp: true
     text: >-
       [ff][b9e7ff][sp=s_icon_l24_inv_repeat2]   Objective 2
-               [cc]Weaken the enemy by attacking secondary targets around the province.[ff][-]
+               [cc]Weaken the enemy by attacking secondary targets around the province[ff][-]
   mod_liberation_a_header:
     noteDev: 
     temp: true

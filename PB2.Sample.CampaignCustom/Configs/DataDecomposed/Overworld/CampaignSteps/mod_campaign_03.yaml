@@ -7,7 +7,16 @@ ui:
   textNavDesc: 
   iconNav: 
   textFromQuest: 
-  mapHeader: 
+  mapHeader:
+    color:
+      r: 1
+      g: 1
+      b: 1
+      a: 1
+    mode: Fixed
+    text: Liberated Fyrland
+    textSector: 
+    textKey: 
   mapBackground:
     image: map_endgame
     size:
@@ -24,35 +33,39 @@ ui:
     keys: 
     tags:
       mod_excluded: false
-travelInteraction:
-  tagsUsed: false
-  keys:
-  - mod_campaign_arrival_01
-  tags: 
+travelInteraction: 
 entry:
   functionsGlobal:
+  - !Log
+    message: 'Campaign step 3: Entry'
   - !ModifyMemoryBase
     changes:
     - change: Set
       key: campaign_countdown_base_length
-      value: 24
+      value: 20
       valueFromMemory: false
       valueFromMemoryKey: 
-  - !ApplyProvinceArrivalEffects {}
   - !QuestStart
-    questKey: mod_liberation
+    questKey: province_liberation
+  - !ApplyProvinceArrivalEffects {}
   functionsBase: 
 liberation:
   functionsGlobal:
   - !Log
-    message: 'Campaign step 2: Liberation'
+    message: 'Campaign step 3: Liberation'
   - !ModifyMemoryBase
     changes:
     - change: Offset
-      key: campaign_progress_region_01
+      key: campaign_progress_region_04
       value: 1
       valueFromMemory: false
       valueFromMemoryKey: 
+  - !OverworldInteractionStartFilter
+    overrideOngoing: true
+    tagsUsed: true
+    keys: 
+    tags:
+      context_liberation: true
   functionsBase: 
 progressDisplay:
   memoryKey: mod_campaign_progress
@@ -70,7 +83,7 @@ branches:
   - comment: 
     checksGlobal: 
     checksBase: 
-    stepKey: mod_campaign_02
+    stepKey: mod_campaign_03
     levelOffset: 
     branchKey: 
     searchRange:
@@ -96,7 +109,7 @@ branches:
   - comment: 
     checksGlobal: 
     checksBase: 
-    stepKey: mod_campaign_02
+    stepKey: mod_campaign_03
     levelOffset: 
     branchKey: 
     searchRange:
@@ -119,61 +132,4 @@ branches:
       tags:
         type_positive: false
         type_special: false
-  - comment: 
-    checksGlobal: 
-    checksBase: 
-    stepKey: mod_campaign_02
-    levelOffset:
-      i: 0
-    branchKey: 
-    searchRange:
-      x: 0
-      y: 0
-    searchPriority: Closest
-    searchMode: Unvisited
-    filter:
-      tagsUsed: true
-      keys: 
-      tags:
-        mod_excluded: false
-    modifiers:
-    - tagsUsed: false
-      keys:
-      - sp_weakened
-      tags: 
-    - tagsUsed: true
-      keys: 
-      tags:
-        type_negative: false
-        type_special: false
-- comment: 
-  preferences: 
-  checksGlobal: 
-  checksBase: 
-  links:
-  - comment: 
-    checksGlobal: 
-    checksBase: 
-    stepKey: mod_campaign_03
-    levelOffset: 
-    branchKey: 
-    searchRange:
-      x: 0
-      y: 0
-    searchPriority: Closest
-    searchMode: Any
-    filter:
-      tagsUsed: true
-      keys: 
-      tags:
-        mod_excluded: false
-    modifiers:
-    - tagsUsed: true
-      keys: 
-      tags:
-        type_positive: true
-    - tagsUsed: false
-      keys:
-      - sp_weakened
-      tags: 
 tags: 

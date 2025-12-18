@@ -1388,6 +1388,10 @@ entries:
     noteDev: 
     temp: true
     text: Campaign options
+  mod_campaign_liberation_01__s_step_01_main:
+    noteDev: 
+    temp: true
+    text: The enemy is in full retreat. There is still much to be done, but that can come later. Your crew is in good spirits and is looking forward to a well deserved rest. A resistance outpost nearby should be a good place to stop.
   mod_campaign_options__s_main_main:
     noteDev: 
     temp: true

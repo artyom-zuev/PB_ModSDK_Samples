@@ -1,4 +1,17 @@
-workshop: 
+workshop:
+  publishedID: 3626329642
+  visibility: FriendsOnly
+  textFromMetadataVersion: true
+  textFromMetadataMain: true
+  title: 
+  description: 
+  internalData: 
+  changes: Minor update.
+  tags:
+  - Campaign
+  - Overworld
+  - Progression
+  texPreviewUpload: true
 configEdits:
   dataLinkers:
   - type: DataLinkerSettingsOverworld
@@ -18,44 +31,6 @@ configEdits:
       edits:
       - path: hidden
         value: true
-        operation: Override
-  - type: DataMultiLinkerOverworldInteraction
-    edits:
-    - key: hg_base_entry
-      removed: false
-      edits:
-      - path: steps.main.optionsReused
-        value: '!d'
-        operation: Override
-      - path: steps.main.optionsReused.0
-        value: '!+'
-        operation: Override
-      - path: steps.main.optionsReused.0.keyInteraction
-        value: mod_campaign_frontline_additions
-        operation: Override
-      - path: steps.main.optionsReused.0.keyStep
-        value: main
-        operation: Override
-      - path: steps.main.optionsReused.0.keyOption
-        value: campaign_options
-        operation: Override
-    - key: hg_base_exit
-      removed: false
-      edits:
-      - path: steps.main.optionsReused
-        value: '!d'
-        operation: Override
-      - path: steps.main.optionsReused.0
-        value: '!+'
-        operation: Override
-      - path: steps.main.optionsReused.0.keyInteraction
-        value: mod_campaign_frontline_additions
-        operation: Override
-      - path: steps.main.optionsReused.0.keyStep
-        value: main
-        operation: Override
-      - path: steps.main.optionsReused.0.keyOption
-        value: campaign_options
         operation: Override
   - type: DataMultiLinkerOverworldPointPreset
     edits:
@@ -83,6 +58,26 @@ configEdits:
       - path: tags
         value: boss !+
         operation: Override
+  - type: DataMultiLinkerOverworldProvinceBlueprints
+    edits:
+    - key: province_00
+      removed: false
+      edits:
+      - path: tags
+        value: mod_excluded !+
+        operation: Override
+    - key: province_breakthrough_line
+      removed: false
+      edits:
+      - path: tags
+        value: mod_excluded !+
+        operation: Override
+    - key: province_capital
+      removed: false
+      edits:
+      - path: tags
+        value: mod_excluded !+
+        operation: Override
 textEdits:
   languages:
     English:
@@ -101,6 +96,12 @@ textEdits:
             mod_campaign_02__text:
               text: Keep hitting the enemy where it hurts. Advance through Fyrland to rendezvous with allied forces.
               textSource: 
+            mod_campaign_03__header:
+              text: Cleanup
+              textSource: 
+            mod_campaign_03__text:
+              text: The enemy will try to counterattack and revert your gains. Keep up the pressure.
+              textSource: 
         overworld_interaction:
           text:
             mod_campaign_arrival_01__s_step_01_main:
@@ -108,6 +109,9 @@ textEdits:
               textSource: 
             mod_campaign_frontline_additions__s_main_op_campaign_options_header:
               text: Campaign options
+              textSource: 
+            mod_campaign_liberation_01__s_step_01_main:
+              text: The enemy is in full retreat. There is still much to be done, but that can come later. Your crew is in good spirits and is looking forward to a well deserved rest. A resistance outpost nearby should be a good place to stop.
               textSource: 
             mod_campaign_options__s_main_main:
               text: You turn your eyes away from the frontline outpost and focus on the screens in front of you.
@@ -141,17 +145,17 @@ textEdits:
               text: All out
               textSource: 
             mod_liberation__s_01_main_a_text:
-              text: You're cleared to engage any target. Hit the enemy where it hurts.
+              text: 'The resistance forces have relayed detailed intel about every target in the region. You can engage in any order: all that matters is overwhelming the enemy.'
               textSource: 
             mod_liberation__s_01_main_cd_hvt_text:
               text: >-
                 [ff][sp=s_icon_l24_inv_empty2]   Objective 1
-                         [cc]Take out all high value targets in the province.[ff]
+                         [cc]Take out enough high value targets to break the enemy morale[ff]
               textSource: 
             mod_liberation__s_01_main_cd_main_text:
               text: >-
                 [ff][b9e7ff][sp=s_icon_l24_inv_repeat2]   Objective 2
-                         [cc]Weaken the enemy by attacking secondary targets around the province.[ff][-]
+                         [cc]Weaken the enemy by attacking secondary targets around the province[ff][-]
               textSource: 
             mod_liberation_a_header:
               text: Liberation

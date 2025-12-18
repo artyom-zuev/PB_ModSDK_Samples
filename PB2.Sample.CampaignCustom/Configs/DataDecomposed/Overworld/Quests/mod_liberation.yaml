@@ -11,8 +11,7 @@ tags:
 steps:
   01_main:
     comment: 
-    index:
-      i: 1
+    index: 
     textName: {}
     textDesc: {}
     textExit: 
@@ -410,6 +409,12 @@ steps:
           value: 1
           valueFromMemory: false
           valueFromMemoryKey: 
+      - !OverworldInteractionStartFilter
+        overrideOngoing: true
+        tagsUsed: false
+        keys:
+        - mod_campaign_liberation_01
+        tags: 
       functionsBase: 
       functionsEventEntity: 
       linkedEffectKeys: 

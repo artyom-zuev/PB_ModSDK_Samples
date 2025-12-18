@@ -251,3 +251,11 @@ entries:
     noteDev: 
     temp: true
     text: Keep hitting the enemy where it hurts. Advance through Fyrland to rendezvous with allied forces.
+  mod_campaign_03__header:
+    noteDev: 
+    temp: true
+    text: Cleanup
+  mod_campaign_03__text:
+    noteDev: 
+    temp: true
+    text: The enemy will try to counterattack and revert your gains. Keep up the pressure.

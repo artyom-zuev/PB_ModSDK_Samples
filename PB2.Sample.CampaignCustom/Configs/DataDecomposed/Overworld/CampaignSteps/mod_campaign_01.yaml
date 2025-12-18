@@ -19,7 +19,11 @@ ui:
       b: 1
       a: 0.7
   mapLabels: 
-  mapProvinceFilter: 
+  mapProvinceFilter:
+    tagsUsed: true
+    keys: 
+    tags:
+      mod_excluded: false
 travelInteraction: 
 entry:
   functionsGlobal:
@@ -57,18 +61,12 @@ branches:
       tagsUsed: true
       keys: 
       tags:
-        group_breakthrough_central: false
-        group_breakthrough_line: false
-        group_capital: false
+        mod_excluded: false
     modifiers:
-    - tagsUsed: false
-      keys:
-      - gen_reward_parts
-      tags: 
-    - tagsUsed: false
-      keys:
-      - sp_liberation_easy
-      tags: 
+    - tagsUsed: true
+      keys: 
+      tags:
+        type_positive: true
   - comment: 
     checksGlobal: 
     checksBase: 
@@ -84,16 +82,31 @@ branches:
       tagsUsed: true
       keys: 
       tags:
-        group_breakthrough_central: false
-        group_breakthrough_line: false
-        group_capital: false
+        mod_excluded: false
     modifiers:
-    - tagsUsed: false
-      keys:
-      - gen_reward_parts
-      tags: 
-    - tagsUsed: false
-      keys:
-      - sp_liberation_easy
-      tags: 
+    - tagsUsed: true
+      keys: 
+      tags:
+        type_positive: true
+  - comment: 
+    checksGlobal: 
+    checksBase: 
+    stepKey: mod_campaign_02
+    levelOffset: 
+    branchKey: 
+    searchRange:
+      x: 0
+      y: 0
+    searchPriority: Closest
+    searchMode: Unvisited
+    filter:
+      tagsUsed: true
+      keys: 
+      tags:
+        mod_excluded: false
+    modifiers:
+    - tagsUsed: true
+      keys: 
+      tags:
+        type_positive: true
 tags: 
