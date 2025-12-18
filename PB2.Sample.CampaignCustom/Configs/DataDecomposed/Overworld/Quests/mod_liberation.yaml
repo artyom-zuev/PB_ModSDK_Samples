@@ -74,6 +74,10 @@ steps:
         max: 
         questMain: true
         questKey: 
+      - !QuestActiveApplyEffectGroup
+        effectKey: patrol_chance
+        questMain: true
+        questKey: 
       functionsBase: 
       functionsEventEntity: 
       linkedEffectKeys: 
@@ -109,34 +113,12 @@ steps:
         max: 
         questMain: true
         questKey: 
+      - !QuestActiveApplyEffectGroup
+        effectKey: event_reset
+        questMain: true
+        questKey: 
       functionsBase: 
       functionsEventEntity: 
-      linkedEffectKeys: 
-    - early: true
-      filterEventTypes: 
-      filterEventEntity:
-        eventType: OverworldPointCombatDefeat
-        checks:
-        - !OverworldValidateQuestLink
-          questMain: true
-          questKey: 
-        - !OverworldValidateMemorySimple
-          filter:
-            quest_liberation_progress_s2:
-              check: Greater
-              value: 0
-      comment: 
-      checksGlobal: 
-      checksBase: 
-      functionsGlobal: 
-      functionsBase: 
-      functionsEventEntity:
-      - !OverworldEntityGlobalGroup
-        functions:
-        - !QuestActiveApplyEffectGroup
-          effectKey: 02_contest_spawn_refresh
-          questMain: true
-          questKey: 
       linkedEffectKeys: 
     - early: false
       filterEventTypes:
@@ -149,7 +131,7 @@ steps:
       checksBase: 
       functionsGlobal:
       - !QuestActiveApplyEffectGroup
-        effectKey: 02_contest_spawn_if_empty
+        effectKey: patrol_guaranteed
         questMain: true
         questKey: 
       - !OverworldInteractionStartFilter
@@ -180,7 +162,7 @@ steps:
             value: 0
       functionsGlobal:
       - !QuestActiveApplyEffectGroup
-        effectKey: 02_contest_spawn_if_empty
+        effectKey: patrol_guaranteed
         questMain: true
         questKey: 
       - !OverworldInteractionStartFilter
@@ -345,6 +327,10 @@ steps:
               value: 0
         functions:
         - !OverworldEntityQuestUnlink {}
+      - !QuestActiveApplyEffectGroup
+        effectKey: patrol_guaranteed
+        questMain: true
+        questKey: 
       functionsBase: 
       functionsEventEntity: 
       linkedEffectKeys: 
@@ -420,267 +406,6 @@ steps:
       linkedEffectKeys: 
     stepNext: 
 effectsShared:
-  02_contest_spawn_if_empty:
-    comment:
-      comment: Check active points in the quest. If none are active, reset (3x spawn) and subtract a progress point.
-    checksGlobal: 
-    checksBase: 
-    functionsGlobal:
-    - !ModifyMemoryBase
-      changes:
-      - change: Remove
-        key: world_auto_countdown_expired
-        value: 1
-        valueFromMemory: false
-        valueFromMemoryKey: 
-    - !OverworldSetCountdownFromMemory
-      durationMemoryKey: campaign_countdown_base_length
-      durationFallback: 24
-    - !QuestDeletePoints
-      onlyCombat: false
-      onlyHostile: false
-      checks: 
-      questMain: true
-      questKey: 
-    - !QuestLiberationUpdate
-      pointsPreserved: 0
-      pointChecks: 
-      progressMemoryKey: quest_liberation_progress_s2
-      filter:
-        contest_s3: false
-        flag_resupply_base: false
-        role_event: false
-        role_patrol: false
-        special: false
-      spawnGroup: 
-      spawnShuffle: true
-      spawnLimit: 2
-      spawnLimitOverridesVariant: true
-      spawnVariantsKey: s2_reset
-      spawnVariantsCustom: 
-      questMain: true
-      questKey: 
-    - !LogMessage
-      data:
-        textSector: ui_overworld
-        textKey: quest_liberation_expiration_all
-      colorKey: negative_primary
-    - !QuestProvinceCreatePointFiltered
-      spawnRange:
-        x: 150
-        y: 200
-      spawnPriority: None
-      filter:
-        role_patrol: true
-      spawnGroupOverride: 
-      nameOverride: 
-      functionsOnSpawn:
-      - !OverworldEntityMemorySet
-        value: 1
-        memoryKey: quest_liberation_progress_s2
-      - !OverworldEntityMemorySetRandom
-        valueRange:
-          x: 8
-          y: 12
-        memoryKey: campaign_countdown_offset
-      - !OverworldEntityEscalation
-        offset: false
-        level: 3
-      - !OverworldEntityExpiration
-        duration: 12
-      - !OverworldEntityQuestUnlink {}
-      questMain: true
-      questKey: 
-    functionsBase: 
-    functionsEventEntity: 
-    linkedEffectKeys: 
-  02_contest_spawn_refresh:
-    comment: 
-    checksGlobal: 
-    checksBase: 
-    functionsGlobal:
-    - !Comment
-      comment: 'First, delete all points that are not part of core set: raids and incursions. 1'
-    - !QuestDeletePoints
-      onlyCombat: true
-      onlyHostile: false
-      checks:
-      - !OverworldValidateMemory
-        check:
-          method: RequireOne
-          checks:
-          - key: quest_liberation_flag_raid
-            presenceDesired: true
-            valueFromMemory: false
-            valueFromMemoryKey: 
-            valueCheck: NoValueCheck
-            value: 0
-          - key: quest_liberation_flag_incursion
-            presenceDesired: true
-            valueFromMemory: false
-            valueFromMemoryKey: 
-            valueCheck: NoValueCheck
-            value: 0
-      questMain: true
-      questKey: 
-    - !Comment
-      comment: Next, run logic update. This will cut the number of quest associated points to 1 and spawn 2 of the escalation/progress profiles below at random.
-    - !QuestLiberationUpdate
-      pointsPreserved: 1
-      pointChecks: 
-      progressMemoryKey: quest_liberation_progress_s2
-      filter:
-        contest_s3: false
-        flag_resupply_base: false
-        role_event: false
-        role_patrol: false
-        special: false
-      spawnGroup: 
-      spawnShuffle: true
-      spawnLimit: 2
-      spawnLimitOverridesVariant: false
-      spawnVariantsKey: s2_refresh
-      spawnVariantsCustom: 
-      questMain: true
-      questKey: 
-    - !Comment
-      comment: "Now, if we pass the chance check, spawn a new incursion or raid. A raid is a high-escalation S1 opportunity in a nearby hostile province. It doesn't progress the quest but can be an opportunity to get loot from another faction. \n\nAn incursion is a max escalation S1 opportunity within current province. It provides lower progress than max escalation standard missions, but gives you opportunity to get loot from another faction."
-    - !OverworldGroupConditional
-      checksGlobal:
-      - !OverworldValidateModifier
-        key: sp_liberation_easy
-        present: false
-      - !OverworldValidateCampaignStepVisit
-        stepKey: 10_breakthrough_line
-        present: true
-      - !OverworldValidateChance
-        chance: 0.5
-      checksBase: 
-      checksBaseValues: 
-      functions:
-      - !Comment
-        comment: If chance roll succeeds, spawn an incursion
-      - !DeletePoints
-        mode: All
-        target: 0
-        onlyCombat: true
-        onlyHostile: true
-        checks:
-        - !OverworldValidateMemory
-          check:
-            method: RequireAll
-            checks:
-            - key: quest_liberation_flag_incursion
-              presenceDesired: true
-              valueFromMemory: false
-              valueFromMemoryKey: 
-              valueCheck: NoValueCheck
-              value: 0
-      - !QuestProvinceCreatePointFiltered
-        spawnRange:
-          x: 150
-          y: 300
-        spawnPriority: None
-        filter:
-          contest_s1: true
-        spawnGroupOverride: 
-        nameOverride: 
-        functionsOnSpawn:
-        - !OverworldEntityMemorySet
-          value: 1
-          memoryKey: quest_liberation_flag_incursion
-        - !OverworldEntityMemorySet
-          value: 2
-          memoryKey: quest_liberation_progress_s2
-        - !OverworldEntityMemorySet
-          value: 16
-          memoryKey: campaign_countdown_offset
-        - !OverworldEntityEscalation
-          offset: false
-          level: 3
-        - !OverworldEntityLevelRelative
-          levelOffset: 1
-        - !OverworldEntityBranchOutsideProvince {}
-        questMain: true
-        questKey: 
-      functionsElse: 
-    - !OverworldChanceBranchGroup
-      chance: 0.25
-      functions:
-      - !Comment
-        comment: If chance roll succeeds, spawn a patrol
-      - !DeletePoints
-        mode: All
-        target: 0
-        onlyCombat: true
-        onlyHostile: true
-        checks:
-        - !OverworldValidatePointTags
-          tagsMethod: RequireAll
-          tags:
-          - tag: role_patrol
-            not: false
-      - !QuestProvinceCreatePointFiltered
-        spawnRange:
-          x: 150
-          y: 200
-        spawnPriority: None
-        filter:
-          role_patrol: true
-        spawnGroupOverride: 
-        nameOverride: 
-        functionsOnSpawn:
-        - !OverworldEntityMemorySet
-          value: 8
-          memoryKey: campaign_countdown_offset
-        - !OverworldEntityExpiration
-          duration: 6
-        - !OverworldEntityQuestUnlink {}
-        questMain: true
-        questKey: 
-      functionsElse: 
-    - !QuestActiveApplyEffectGroup
-      effectKey: event_reset
-      questMain: true
-      questKey: 
-    functionsBase: 
-    functionsEventEntity: 
-    linkedEffectKeys: 
-  02_contest_spawn_reset:
-    comment: 
-    checksGlobal: 
-    checksBase: 
-    functionsGlobal:
-    - !QuestDeletePoints
-      onlyCombat: false
-      onlyHostile: false
-      checks: 
-      questMain: true
-      questKey: 
-    - !QuestLiberationUpdate
-      pointsPreserved: 0
-      pointChecks: 
-      progressMemoryKey: quest_liberation_progress_s2
-      filter:
-        contest_s3: false
-        flag_resupply_base: false
-        role_event: false
-        role_patrol: false
-        special: false
-      spawnGroup: 
-      spawnShuffle: true
-      spawnLimit: 0
-      spawnLimitOverridesVariant: false
-      spawnVariantsKey: s2_reset
-      spawnVariantsCustom: 
-      questMain: true
-      questKey: 
-    - !OverworldSetCountdownFromMemory
-      durationMemoryKey: campaign_countdown_base_length
-      durationFallback: 24
-    functionsBase: 
-    functionsEventEntity: 
-    linkedEffectKeys: 
   event_reset:
     comment:
       comment: This effect spawns event POIs, but only if the quest memory indicates they weren't spawned before.
@@ -735,6 +460,84 @@ effectsShared:
       - !UnlockCodex
         key: overworld_poi_events
       functionsElse: 
+    functionsBase: 
+    functionsEventEntity: 
+    linkedEffectKeys: 
+  patrol_chance:
+    comment: 
+    checksGlobal: 
+    checksBase: 
+    functionsGlobal:
+    - !OverworldChanceBranchGroup
+      chance: 0.35
+      functions:
+      - !Comment
+        comment: If chance roll succeeds, spawn a patrol
+      - !DeletePoints
+        mode: All
+        target: 0
+        onlyCombat: true
+        onlyHostile: true
+        checks:
+        - !OverworldValidatePointTags
+          tagsMethod: RequireAll
+          tags:
+          - tag: role_patrol
+            not: false
+      - !QuestProvinceCreatePointFiltered
+        spawnRange:
+          x: 150
+          y: 200
+        spawnPriority: None
+        filter:
+          role_patrol: true
+        spawnGroupOverride: 
+        nameOverride: 
+        functionsOnSpawn:
+        - !OverworldEntityMemorySet
+          value: 8
+          memoryKey: campaign_countdown_offset
+        - !OverworldEntityExpiration
+          duration: 6
+        - !OverworldEntityQuestUnlink {}
+        questMain: true
+        questKey: 
+      functionsElse: 
+    functionsBase: 
+    functionsEventEntity: 
+    linkedEffectKeys: 
+  patrol_guaranteed:
+    comment:
+      comment: Check active points in the quest. If none are active, reset (3x spawn) and subtract a progress point.
+    checksGlobal: 
+    checksBase: 
+    functionsGlobal:
+    - !QuestProvinceCreatePointFiltered
+      spawnRange:
+        x: 150
+        y: 200
+      spawnPriority: None
+      filter:
+        role_patrol: true
+      spawnGroupOverride: 
+      nameOverride: 
+      functionsOnSpawn:
+      - !OverworldEntityMemorySet
+        value: 1
+        memoryKey: quest_liberation_progress_s2
+      - !OverworldEntityMemorySetRandom
+        valueRange:
+          x: 8
+          y: 12
+        memoryKey: campaign_countdown_offset
+      - !OverworldEntityEscalation
+        offset: false
+        level: 3
+      - !OverworldEntityExpiration
+        duration: 12
+      - !OverworldEntityQuestUnlink {}
+      questMain: true
+      questKey: 
     functionsBase: 
     functionsEventEntity: 
     linkedEffectKeys: 
