@@ -88,5 +88,7 @@ steps:
               checkStrict: false
               offset: true
               value: -100
+          - !ModExtensions.MyCustomFunction
+            input: Test3
           functionsLocal: 
     optionsReused: 
