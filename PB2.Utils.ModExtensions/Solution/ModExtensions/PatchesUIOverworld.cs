@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using UnityEngine;
 using Entitas;
@@ -13,13 +12,13 @@ using PhantomBrigade.Overworld;
 namespace ModExtensions
 {
     [HarmonyPatch]
-    public class Patches
+    public class PatchesUIOverworld
     {
         private static IGroup<OverworldEntity> missionEntityGroup = null;
         private static List<OverworldEntity> missionEntityBuffer = new List<OverworldEntity> ();
         private static StringBuilder sb = new StringBuilder ();
 
-        [HarmonyPatch(typeof(CIViewOverworldProcess), "RedrawMissions")]
+        [HarmonyPatch (typeof (CIViewOverworldProcess), "RedrawMissions")]
         [HarmonyPrefix]
         public static bool RedrawMissions (CIViewOverworldProcess __instance)
         {
@@ -33,18 +32,18 @@ namespace ModExtensions
                 // First, use ModUtilities to fetch dependencies
                 var missionInstancesField = ModUtilities.GetPrivateFieldInfo (view, "missionInstances", false, true);
                 var missionInstances = missionInstancesField.GetFieldInfoValue<Dictionary<int, CIHelperOverworldSidebarMission>> (view);
-                
+
                 var missionPoolField = ModUtilities.GetPrivateFieldInfo (view, "missionPool", false, true);
                 var missionPool = missionPoolField.GetFieldInfoValue<List<CIHelperOverworldSidebarMission>> (view);
 
                 var questKeyLastField = ModUtilities.GetPrivateFieldInfo (view, "questKeyLast", false, true);
                 var questKeyLast = questKeyLastField.GetFieldInfoValue<string> (view);
-                
+
                 var baseSpeedMethod = ModUtilities.GetPrivateMethodInfo (view, "GetBaseSpeed", false, true);
                 var speedBase = baseSpeedMethod.GetMethodInfoOutput<float> (view, null);
 
                 var layoutRedrawRequestedField = ModUtilities.GetPrivateFieldInfo (view, "layoutRedrawRequested", false, true);
-                
+
                 var onMissionClickMethod = ModUtilities.GetPrivateMethodInfo (view, "OnMissionClick", false, true);
                 var onMissionClickSecondaryMethod = ModUtilities.GetPrivateMethodInfo (view, "OnMissionClickSecondary", false, true);
                 var onMissionHoverStartMethod = ModUtilities.GetPrivateMethodInfo (view, "OnMissionHoverStart", false, true);
@@ -76,7 +75,7 @@ namespace ModExtensions
                 UIHelper.PrepareForPoolIteration (ref missionPool, out int poolSizeLast, out int poolInstanceIndex, out int poolInstancesUsed);
 
                 int entityIndex = 0;
-                
+
                 var entitiesQuestLinked = !string.IsNullOrEmpty (questKeyLast) ? overworld.GetEntitiesWithQuestLink (questKeyLast) : null;
 
                 var missionHolder = view.missionWidget.transform;
@@ -86,18 +85,15 @@ namespace ModExtensions
                 var OnMissionClickSecondary = onMissionClickSecondaryMethod.GetActionFromMethodInfo<int> (view);
                 var OnMissionHoverStart = onMissionHoverStartMethod.GetActionFromMethodInfo<int> (view);
                 var OnMissionHoverEnd = onMissionHoverEndMethod.GetActionFromMethodInfo<int> (view);
-                
+
                 var RedrawMission = redrawMissionMethod.GetActionFromMethodInfo<CIHelperOverworldSidebarMission, OverworldEntity, float> (view);
                 var RefreshColliderList = refreshColliderListMethod.GetActionFromMethodInfo (view);
-                
-                
-                
-                
+
                 // Next, fetch custom settings
                 int drawLimit = 3;
                 bool drawFallbackAnyCombatDesc = false;
                 bool drawOnlyWithDisplayMemory = false;
-                
+
                 if (IDUtility.IsGameLoaded () && IDUtility.playerBasePersistent != null)
                 {
                     var basePersistent = IDUtility.playerBasePersistent;
@@ -108,9 +104,7 @@ namespace ModExtensions
                     if (basePersistent.TryGetMemoryRounded ("mod_ext_missions_list_memory_exclusive", out var v3) && v3 > 0)
                         drawOnlyWithDisplayMemory = true;
                 }
-                
-                Debug.Log ($"ModExtensions | RedrawMissions | Customized path | Limit: {drawLimit} | Any combat site: {drawFallbackAnyCombatDesc} | Draw only with display memory: {drawOnlyWithDisplayMemory}");
-                
+
                 List<OverworldEntity> entitiesFinal = null;
                 if (entitiesQuestLinked != null && entitiesQuestLinked.Count > 0)
                 {
@@ -123,7 +117,7 @@ namespace ModExtensions
                     var entitiesCombatDesc = missionEntityGroup.GetEntities (missionEntityBuffer);
                     entitiesFinal = entitiesCombatDesc;
                 }
-                
+
                 var questsActive = overworld.hasQuestsActive ? overworld.questsActive.s : null;
                 int questsCount = questsActive != null ? questsActive.Count : 0;
                 bool questsVisible = questsCount > 0;
@@ -153,7 +147,7 @@ namespace ModExtensions
                         var entityPersistent = IDUtility.GetLinkedPersistentEntity (entityOverworld);
                         if (entityPersistent == null || entityPersistent.isDestroyed)
                             continue;
-                        
+
                         if (drawOnlyWithDisplayMemory && memoryDisplayed != null)
                         {
                             bool anyMemoryFound = false;
@@ -165,11 +159,11 @@ namespace ModExtensions
                                     break;
                                 }
                             }
-                            
+
                             if (!anyMemoryFound)
                                 continue;
                         }
-                        
+
                         var instance = UIHelper.GetInstanceFromPool
                         (
                             missionPool,
@@ -198,7 +192,7 @@ namespace ModExtensions
                         sb.Append (entityPersistent.ToLog ());
                         sb.Append ($"\nIndex: ");
                         sb.Append (entityIndex);
-                        
+
                         instance.button.tooltipUsed = true;
                         instance.button.tooltipOffset = new Vector3 (328f, 0f, 0f);
                         instance.button.tooltipPivot = UIWidget.Pivot.TopLeft;
@@ -208,7 +202,7 @@ namespace ModExtensions
 
                         RedrawMission (instance, entityOverworld, speedBase);
                         entityIndex += 1;
-                        
+
                         if (entityIndex >= drawLimit)
                             break;
                     }
@@ -223,24 +217,18 @@ namespace ModExtensions
                 if (missionsVisible)
                     view.missionWidget.height = entityIndex * view.missionSpacing;
 
-                Debug.Log ($"ModExtensions | RedrawMissions | Finished executing patch, instances: {missionInstances.Count}");
+                Debug.Log ($"ModExtensions | RedrawMissions (Patched) | Created instances: {missionInstances.Count} | Limit: {drawLimit} | Any combat site: {drawFallbackAnyCombatDesc} | Draw only with display memory: {drawOnlyWithDisplayMemory} | Memory displayed: {memoryDisplayed.ToStringFormatted ()}");
                 layoutRedrawRequestedField.SetValue (view, true);
             }
             catch (Exception e)
             {
                 Debug.LogError ($"ModExtensions | RedrawMissions | Skipping patch, exception encountered:\n{e.Message}");
+                // Execute original method
                 return true;
             }
-            
+
+            // Stop original method from executing
             return false;
-        }
-        
-        [HarmonyPatch(typeof(CIViewOverworldProcess), "RedrawMissions")]
-        [HarmonyPostfix]
-        public static void Postfix (CIViewOverworldProcess __instance)
-        {
-            int count = __instance != null && __instance.missionWidget != null ? __instance.missionWidget.transform.childCount : 0;
-            Debug.Log ($"ModExtensions | Redrawing missions | Instance count: {count}");
         }
     }
 }
