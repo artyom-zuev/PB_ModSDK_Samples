@@ -1,0 +1,27 @@
+priority: 0
+colorHue: 0.5
+id: PB2.Sample.Portraits
+ver: 1.2
+url: https://github.com/BraceYourselfGames/PB_ModSDK
+includesConfigOverrides: false
+includesConfigEdits: false
+includesConfigTrees: false
+includesLibraries: false
+includesTextures: true
+includesLocalizationEdits: false
+includesLocalizations: false
+includesAssetBundles: false
+gameVersion2Compatible: true
+gameVersionMin: 1.0
+gameVersionMax: 
+name: 'Sample: 2D Portraits'
+desc: >-
+  [b]Sample mod[/b]. Demonstrates how to add new overlays (flat images displayed on top of pilot portrait windows) to the game. Providing opaque images lets you fully hide 3D characters if you so desire. These portraits can be used on any pilot using the overlay selector in the pilot customization screen. The game ships with semitransparent overlay options, but the same system can be used for fully opaque images like these.
+
+
+  Scroll through the Overlays option in the pilot editor to select the portraits.
+
+
+  - Art from Phantom Brigade Early Access
+
+  - Created using the [url=https://github.com/BraceYourselfGames/PB_ModSDK][u]Mod SDK[/u][/url]

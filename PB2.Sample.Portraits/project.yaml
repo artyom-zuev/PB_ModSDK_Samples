@@ -1,0 +1,18 @@
+workshop:
+  publishedID: 3270976290
+  visibility: Public
+  textFromMetadataVersion: true
+  textFromMetadataMain: true
+  title: 
+  description: 
+  internalData: 
+  changes: 'Updated the mod to make it compatible with 2.0. This requires setting `gameVersion2Compatible: true` in metadata.yaml and filling `gameVersionMin: 1.0` to make it backwards compatible to those still playing 1.3. Do not try this for any mods other than portraits and liveries.'
+  tags:
+  - Pilots
+  - Customization
+  texPreviewUpload: true
+configEdits: 
+textEdits: 
+assetBundles: 
+libraryDLLs: 
+extraFiles: 
