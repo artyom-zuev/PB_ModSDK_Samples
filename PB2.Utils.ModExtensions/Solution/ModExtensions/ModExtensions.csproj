@@ -55,6 +55,9 @@
         <Reference Include="UnityEngine.CoreModule">
           <HintPath>..\..\..\..\..\..\..\Games\Steam\steamapps\common\Phantom Brigade\phantombrigade_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
         </Reference>
+        <Reference Include="UnityUtilities">
+          <HintPath>..\..\..\..\..\..\Games\Steam\steamapps\common\Phantom Brigade\phantombrigade_Data\Managed\UnityUtilities.dll</HintPath>
+        </Reference>
     </ItemGroup>
     <ItemGroup>
         <Compile Include="ModLink.cs" />
