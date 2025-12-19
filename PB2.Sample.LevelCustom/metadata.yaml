@@ -1,0 +1,22 @@
+priority: 0
+colorHue: 0.5
+id: PB2.Sample.LevelCustom
+ver: 0.1
+url: https://github.com/BraceYourselfGames/PB_ModSDK
+includesConfigOverrides: true
+includesConfigEdits: false
+includesConfigTrees: false
+includesLibraries: false
+includesTextures: false
+includesLocalizationEdits: false
+includesLocalizations: false
+includesAssetBundles: false
+gameVersion2Compatible: true
+gameVersionMin: 2.0
+gameVersionMax: 
+name: 'Sample: Combat levels'
+desc: >-
+  [b]Sample mod[/b]. Demonstrates how to add a new level or modify an existing level.
+
+
+  - Created using the [url=https://github.com/BraceYourselfGames/PB_ModSDK][u]Mod SDK[/u][/url]
