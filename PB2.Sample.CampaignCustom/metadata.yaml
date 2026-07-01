@@ -24,3 +24,5 @@ desc: >-
   - Provides an example of modifying campaign steps, quests, interactions, memory and a few other databases related to campaign structure and presentation
 
   - Created using the [url=https://github.com/BraceYourselfGames/PB_ModSDK][u]Mod SDK[/u][/url]
+
+  - Source files available at [url=https://github.com/artyom-zuev/PB_ModSDK_Samples][u]Samples Repository[/u][/url]
