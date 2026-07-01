@@ -10,6 +10,7 @@ LocalizationEdits/
 WorkshopTemp/
 ConfigOverrides/
 ConfigEdits/
+AssetSource/
 
 # Misc files
 *.blend1
